@@ -32,31 +32,31 @@
 #endif
 
 /* code from GLIBC */
-int semctl(int semid, int semnum, int cmd, ...) {
-  union semun arg;
-  va_list ap;
-
-  va_start (ap, cmd);
-
-  /* Get the argument only if required.  */
-  arg.buf = NULL;
-  switch (cmd)
-  {
-    case SETVAL:        /* arg.val */
-    case GETALL:        /* arg.array */
-    case SETALL:
-    case IPC_STAT:      /* arg.buf */
-    case IPC_SET:
-    case SEM_STAT:
-    case IPC_INFO:      /* arg.__buf */
-    case SEM_INFO:
-      va_start (ap, cmd);
-      arg = va_arg (ap, union semun);
-      va_end (ap);
-      break;
-  }
-
-  va_end (ap);
-
-  return syscall(__NR_semctl, semid, semnum, cmd, arg);
-}
+//int semctl(int semid, int semnum, int cmd, ...) {
+//  union semun arg;
+//  va_list ap;
+//
+//  va_start (ap, cmd);
+//
+//  /* Get the argument only if required.  */
+//  arg.buf = NULL;
+//  switch (cmd)
+//  {
+//    case SETVAL:        /* arg.val */
+//    case GETALL:        /* arg.array */
+//    case SETALL:
+//    case IPC_STAT:      /* arg.buf */
+//    case IPC_SET:
+//    case SEM_STAT:
+//    case IPC_INFO:      /* arg.__buf */
+//    case SEM_INFO:
+//      va_start (ap, cmd);
+//      arg = va_arg (ap, union semun);
+//      va_end (ap);
+//      break;
+//  }
+//
+//  va_end (ap);
+//
+//  return syscall(__NR_semctl, semid, semnum, cmd, arg);
+//}
